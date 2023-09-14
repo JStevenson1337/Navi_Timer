@@ -42,5 +42,5 @@ nav_app.master.title("Timer Application")
 nav_app.master.maxsize(1000, 1000)
 main_label = nav_app.master.Label("Timer Application")
 
-nav_app.mainloop()
 
+nav_app.mainloop()

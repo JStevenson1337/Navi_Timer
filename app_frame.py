@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import tkinter as tk
 
+app_frame_comment = '''
+    Module that provides information about the current state of the application
+'''
 class Application(tk.Frame):
     '''Application object that can be used to interact with the application'''
     def __init__(self, master=None):
