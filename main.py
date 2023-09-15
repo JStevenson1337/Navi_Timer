@@ -8,12 +8,20 @@ Author: Jeremy Stevenson < Jeremy Stevenson at protonmail dot com>
 License: MIT License
 """
 
-import modules.app_frame as app_frame
+from modules import app_frame as af
+from modules import time_module as tm
+import sys
+
 
 
 try:
-    app_frame.app.mainloop()
+    af.app.mainloop()
 except ValueError:
+    print("Failed to initialize")
+
+try:
+    tm.countdown(60, 0, 0)
+except ImportError:
     print("Failed to initialize")
 
 if __name__ == "__main__":
