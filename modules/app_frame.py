@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Path: app_frame.py
 import tkinter as tk
+
 
 app_frame_comment = '''
     Module that provides information about the current state of the application
