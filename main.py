@@ -12,7 +12,7 @@ import tkinter as tk
 import time, datetime
 
 
-app_frame_comment = '''
+APP_COMMENT = '''
     Module that provides information about the current state of the application
 '''
 class Application(tk.Frame):
@@ -31,19 +31,49 @@ class Application(tk.Frame):
 
     def create_buttons(self):
         '''Creates the buttons for the application'''
-        self.start_button = tk.Button(self, text='Start',fg='black', 
-bg='green', font=("Helvetica", 20))
+        self.start_button = tk.Button(self, text='Start',fg='black',        bg='green', font=("Helvetica", 20))
         self.start_button.grid(column=0, row=4)
-        self.pause_button = tk.Button(self, text='Pause/Resume',fg='black', 
-bg='blue', font=("Helvetica", 20))
+        self.pause_button = tk.Button(self, text='Pause/Resume',fg='black', bg='blue', font=("Helvetica", 20))
         self.pause_button.grid(column=2, row=4)
-        self.stop_button = tk.Button(self, text='Stop',fg='black', bg='red', 
-font=("Helvetica", 20))
+        self.stop_button = tk.Button(self, text='Stop',fg='black', bg='red', font=("Helvetica", 20))
         self.stop_button.grid(column=3, row=4)
+
+
+class Timer():
+    '''Timer object that can be used to interact with the timer'''
+    def __init__(self):
+        pass
+
+class IPV_Station():
+    '''IPV_Station object that can be used to interact with the IPV_Station'''
+    def __init__(self):
+        pass
 
 app = Application()
 app.master.title('Timer Application')
 # app.master.geometry('800x800+10+20')
 main_label = tk.Label(app, text='Timer', font=('Helvetica', 30))
-main_label.place(x=400, y=20)
+main_label.grid(column=0, row=0, columnspan=5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Main loop for the application
 app.mainloop()
