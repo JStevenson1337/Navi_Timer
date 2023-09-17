@@ -8,7 +8,7 @@ import datetime
 
 class Current_dt():
     '''Stores the current time and current date'''
-    def __init__(self):
+    def (self):
         self.current = datetime.datetime.now()
         self.one_year = self.current + datetime.timedelta(days = 365)
 

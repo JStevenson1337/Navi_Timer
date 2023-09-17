@@ -7,79 +7,142 @@ be used to run the application and its modules in the  main loop
 Author: Jeremy Stevenson < Jeremy Stevenson at protonmail dot com>
 License: MIT License
 """
-import sys, os
-from tkinter import *
-import time, datetime
+import sys
+import tkinter as tk
+import time
+import datetime
 
 
 APP_COMMENT = '''
     Module that provides information about the current state of the application
 '''
-class Application(Frame):
+class Application(tk.Frame):
     '''Application object that can be used to interact with the application'''
     def __init__(self, master=None):
-        Frame.__init__(self, master)
+        tk.Frame.__init__(self, master)
         self.master = master
-        self.label = Label(text="", fg="Black", font=("Helvetica", 20), justify='left')
-        self.label.pack(fill='none', expand=2)
-        # self.label.grid(column=0, row=0)
-        # self.grid()
+        self.pack()
+
+
+
+        self.label = tk.Label(text="", fg="Black", font=("Helvetica", 20))
+        self.label.pack(side='top', fill='none')
+
+        self.main_label = tk.Label(text='Timer', font=('Helvetica', 
+                                            50, 'bold', 'underline'), justify='center', fg='black', bg='white')
+        self.main_label.pack()
+        self.create_pw()
         self.create_widgets()
         self.create_buttons()
         self.update_clock()
-
+        
+        
+    # Create widgets function
     def create_widgets(self):
         '''Creates the widgets for the application'''
 
         # creating a Fra, e which can expand according
         # to the size of the window
-        pane = Frame(self.master)
-        pane.pack(fill = 'none', expand = True)
+        pane = tk.Frame(self.master)
+        pane.pack(fill = 'none', expand = 'True')
 
         # button widgets which can also expand and fill
         # in the parent widget entirely
 
         # Start button
-        start_button = Button(pane, text = "Start",
+        start_button = tk.Button(pane, text = "Start",
                     background = "green", fg = "white", font=("Helvetica", 20) )
-        start_button.pack(side = LEFT, expand = True, fill = 'none')
+        start_button.pack(side = 'left', expand = 'true', fill = 'none', padx=10, pady=10)
 
         # Pause/Resume button
-        pause_button = Button(pane, text = "pause/resume",
+        pause_button = tk.Button(pane, text = "pause/resume",
                     background = "blue", fg = "white", font=("Helvetica", 20))
-        pause_button.pack(side = LEFT, expand = True, fill = 'none')
+        pause_button.pack(side = 'left', expand = 'true', fill = 'none', padx=10, pady=10)
 
         # Stop button
-        stop_button = Button(pane, text = "Stop",
+        stop_button = tk.Button(pane, text = "Stop",
                     background = "red", fg = "white", font=("Helvetica", 20))
-        stop_button.pack(side = LEFT, expand = True, fill = 'none')
+        stop_button.pack(side = 'left', expand = "true", fill = 'none', padx=10, pady=10)
 
         # Exit button
-        exit_button = Button(pane, text = "Exit",
+        exit_button = tk.Button(pane, text = "Exit",
                     background = "black", fg = "white", font=("Helvetica", 20), command=self.exit_program)
-        exit_button.pack(side = LEFT, expand = True, fill = 'none')
-        
+        exit_button.pack(side = 'left', expand = 'true', fill = 'none', padx=10, pady=10)
 
-
+    # Create buttons function
     def create_buttons(self):
         '''Creates the buttons for the application'''
         # Menu bar
-        menu = Menu(self)
+        menu = tk.Menu(self)
         self.master.config(menu=menu)
 
-        file_menu = Menu(menu)
+        # File menu
+        file_menu = tk.Menu(menu)
         file_menu.add_command(label="Item")
         file_menu.add_command(label="Exit", command=self.quit)
         menu.add_cascade(label="File", menu=file_menu)
 
-        edit_menu = Menu(menu)
+        # Edit menu
+        edit_menu = tk.Menu(menu)
         edit_menu.add_command(label="Undo")
         edit_menu.add_command(label="Redo")
         menu.add_cascade(label="Edit", menu=edit_menu)
 
-        help_menu = Menu(menu)
+        # Help menu
+        help_menu = tk.Menu(menu)
         help_menu.add_command(label="About")
         menu.add_cascade(label="Help", menu=help_menu)
+
+    # Create PanedWindow
+    def create_pw(self):
+        '''Creates the PanedWindow for the application'''
+        # panedwindow object
+        pw = tk.PanedWindow(orient ='vertical')
+
+
+
+        # # Button widget
+        # top = tk.Button(pw, text ="Click Me !")
+        # top.pack(side = 'top')
+
+        # # This will add button widget to the panedwindow
+        # pw.add(top)
+
+        # # Checkbutton Widget
+        # bot = tk.Checkbutton(pw, text ="Choose Me !")
+        # bot.pack(side = 'top')
+
+        # # This will add Checkbutton to panedwindow
+        # pw.add(bot)
+
+        # # adding Label widget
+        # label = tk.Label(pw, text ="I'm a Label")
+        # label.pack(side = 'top')
+
+        # pw.add(label)
+
+        # # Tkinter string variable
+        # string = tk.StringVar()
+
+        # # Entry widget with some styling in fonts
+        # entry = tk.Entry(pw, textvariable = string, font =('arial', 15, 'bold'))
+        # entry.pack()
+
+        # # Focus force is used to focus on particular
+        # # widget that means widget is already selected for operations
+        # entry.focus_force()
+
+        # pw.add(entry)
+
+        # expand is used so that widgets can expand
+        # fill is used to let widgets adjust itself
+        # according to the size of main window
+        pw.pack(fill = 'both', expand = 'true')
+
+        # This method is used to show sash
+        pw.configure(sashrelief ='raised')
+
+
 
     # CLock update function
     def update_clock(self):
@@ -88,9 +151,11 @@ class Application(Frame):
         self.label.configure(text=now)
         self.after(1000, self.update_clock)
 
+    # Exit program function
     def exit_program(self):
         '''Exits the program'''
         sys.exit()
+
 
 
 
@@ -109,17 +174,13 @@ class Station():
 
 
 
-root = Tk()
+
+root = tk.Tk()
 app = Application(root)
 root.title('Timer Application')
-# app.master.geometry('800x800+10+20')
-main_label = Label(app, text='Timer', font=('Helvetica', 30, 'bold', 'underline'), justify='center', fg='black', bg='white')
-main_label.pack(fill='none', expand=2)
-# main_label.grid(column=0, row=0)
 root.geometry('500x500+10+20')
 root.after(1000, app.update_clock)
-
-
+app.mainloop()
 
 
 
@@ -139,13 +200,24 @@ root.after(1000, app.update_clock)
 
 
 # Main loop for the application
-app.mainloop()
 
 
-# if __name__ == '__main__':
-#     Application()
-#     Timer()
-#     Station()
+
+if  __name__ == '__main__':
+    Application()
+    Timer()
+    Station()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
