@@ -27,11 +27,12 @@ class Application(tk.Frame):
         # Label widget
         self.label = tk.Label(text="", fg="Black", font=("Helvetica", 20))
         self.label.pack(side='top', fill='none')
-        self.main_label = tk.Label(text='Timer', font=('Helvetica', 50, 'bold', 'underline'), justify='center', fg='black')
+        self.main_label = tk.Label(text='Line Timer', font=('Helvetica', 50, 'bold', 'underline'), justify='center', fg='black', activebackground='black', activeforeground='white', bg='white')
         self.main_label.pack(side='top', fill='none', expand='true')
 
         # Function instantiations
         self.create_pw()
+        # self.start_timer()
         self.create_widgets()
         self.create_buttons()
         self.update_clock()
@@ -98,8 +99,6 @@ class Application(tk.Frame):
         # panedwindow object
         pw = tk.PanedWindow(orient ='vertical')
 
-
-
         # Button widget
         top = tk.Button(pw, text ="Click Me !")
         top.pack(side = 'top')
@@ -155,7 +154,25 @@ class Application(tk.Frame):
         '''Exits the program'''
         sys.exit()
 
-
+   # def start_timer(self):
+   #     '''Starts the timer'''
+   #     while True:
+   #         try:
+   #             mins, secs = input("Enter the time in minutes and seconds: ").split(":")
+   #             mins = int(mins)
+   #             secs = int(secs)
+   #             break
+   #         except ValueError:
+   #             print("Error: Please enter the correct format")
+   #     timer = mins*60 + secs
+   #     while timer > -1:
+   #         mins, secs = divmod(timer, 60)
+   #         hours, mins = divmod(mins, 60)
+   #         timeformat = "{:02d}:{:02d}:{:02d}".format(hours, mins, secs)
+   #         print(timeformat, end='\r')
+   #         time.sleep(1)
+   #         timer -= 1
+   #     print("Timer completed!")
 
 
 
@@ -164,6 +181,7 @@ class Timer():
     '''Timer object that can be used to interact with the timer'''
     def __init__(self):
         pass
+
 
 class Station():
     '''IPV_Station object that can be used to interact with the IPV_Station'''
@@ -206,6 +224,8 @@ if  __name__ == '__main__':
     Application()
     Timer()
     Station()
+
+
 
 
 
