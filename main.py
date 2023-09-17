@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Name: main.py
-Purpose: Main file for the application that will 
-be used to run the application and its modules in the  main loop
-Author: Jeremy Stevenson < Jeremy Stevenson at protonmail dot com>
-License: MIT License
+    Name: main.py
+    Purpose: Main file for the application that will 
+    be used to run the application and its modules in the  main loop
+    Author: Jeremy Stevenson < Jeremy Stevenson at protonmail dot com>
+    License: MIT License
 """
 import sys
 import tkinter as tk
 import time
-import datetime
+# import datetime
 
 
 APP_COMMENT = '''
@@ -18,25 +18,24 @@ APP_COMMENT = '''
 '''
 class Application(tk.Frame):
     '''Application object that can be used to interact with the application'''
-    def __init__(self, master=None):
+    def __init__(self, master='None'):
         tk.Frame.__init__(self, master)
         self.master = master
         self.pack()
 
 
-
+        # Label widget
         self.label = tk.Label(text="", fg="Black", font=("Helvetica", 20))
         self.label.pack(side='top', fill='none')
+        self.main_label = tk.Label(text='Timer', font=('Helvetica', 50, 'bold', 'underline'), justify='center', fg='black')
+        self.main_label.pack(side='top', fill='none', expand='true')
 
-        self.main_label = tk.Label(text='Timer', font=('Helvetica', 
-                                            50, 'bold', 'underline'), justify='center', fg='black', bg='white')
-        self.main_label.pack()
+        # Function instantiations
         self.create_pw()
         self.create_widgets()
         self.create_buttons()
         self.update_clock()
-        
-        
+
     # Create widgets function
     def create_widgets(self):
         '''Creates the widgets for the application'''
@@ -101,38 +100,38 @@ class Application(tk.Frame):
 
 
 
-        # # Button widget
-        # top = tk.Button(pw, text ="Click Me !")
-        # top.pack(side = 'top')
+        # Button widget
+        top = tk.Button(pw, text ="Click Me !")
+        top.pack(side = 'top')
 
-        # # This will add button widget to the panedwindow
-        # pw.add(top)
+        # This will add button widget to the panedwindow
+        pw.add(top)
 
-        # # Checkbutton Widget
-        # bot = tk.Checkbutton(pw, text ="Choose Me !")
-        # bot.pack(side = 'top')
+        # Checkbutton Widget
+        bot = tk.Checkbutton(pw, text ="Choose Me !")
+        bot.pack(side = 'top')
 
-        # # This will add Checkbutton to panedwindow
-        # pw.add(bot)
+        # This will add Checkbutton to panedwindow
+        pw.add(bot)
 
-        # # adding Label widget
-        # label = tk.Label(pw, text ="I'm a Label")
-        # label.pack(side = 'top')
+        # adding Label widget
+        label = tk.Label(pw, text ="I'm a Label")
+        label.pack(side = 'top')
 
-        # pw.add(label)
+        pw.add(label)
 
-        # # Tkinter string variable
-        # string = tk.StringVar()
+        # Tkinter string variable
+        string = tk.StringVar()
 
-        # # Entry widget with some styling in fonts
-        # entry = tk.Entry(pw, textvariable = string, font =('arial', 15, 'bold'))
-        # entry.pack()
+        # Entry widget with some styling in fonts
+        entry = tk.Entry(pw, textvariable = string, font =('arial', 15, 'bold'))
+        entry.pack()
 
-        # # Focus force is used to focus on particular
-        # # widget that means widget is already selected for operations
-        # entry.focus_force()
+        # Focus force is used to focus on particular
+        # widget that means widget is already selected for operations
+        entry.focus_force()
 
-        # pw.add(entry)
+        pw.add(entry)
 
         # expand is used so that widgets can expand
         # fill is used to let widgets adjust itself
@@ -148,7 +147,7 @@ class Application(tk.Frame):
     def update_clock(self):
         '''Updates the clock on the application'''
         now = time.strftime("%H:%M:%S")
-        self.label.configure(text=now)
+        self.label.configure(text="Current Time: " + now)
         self.after(1000, self.update_clock)
 
     # Exit program function
@@ -207,6 +206,7 @@ if  __name__ == '__main__':
     Application()
     Timer()
     Station()
+
 
 
 
