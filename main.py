@@ -20,9 +20,9 @@ class Application(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
-        self.label = Label(text="", fg="Red", font=("Helvetica", 18))
-        self.label.grid(column=3, row=3, columnspan=3)
-        self.grid()
+        self.label = Label(text="", fg="Black", font=("Helvetica", 20), justify='left')
+        # self.label.grid(column=0, row=0)
+        # self.grid()
         self.create_widgets()
         self.create_buttons()
         self.update_clock()
@@ -34,17 +34,17 @@ class Application(Frame):
         '''Creates the buttons for the application'''
         # Start button
         self.start_button = Button(self, text='Start',fg='black',        bg='green', font=("Helvetica", 20))
-        self.start_button.grid(column=0, row=4)
+        #self.start_button.grid(column=0, row=4)
         # Pause/Resume button
         self.pause_button = Button(self, text='Pause/Resume',fg='black', bg='blue', font=("Helvetica", 20))
-        self.pause_button.grid(column=2, row=4)
+        #self.pause_button.grid(column=2, row=4)
         # Stop button
         self.stop_button = Button(self, text='Stop',fg='black', bg='red', font=("Helvetica", 20))
-        self.stop_button.grid(column=3, row=4)
+        #self.stop_button.grid(column=3, row=4)
         # Exit button
         self.quit_button = Button(self, text='Quit',
-        command=self.quit)
-        self.quit_button.grid(column=4, row=4)
+        command=self.exit_program, fg='black', bg='red', font=("Helvetica", 20))
+        #self.quit_button.grid(column=4, row=4)
         
         # Menu bar
         menu = Menu(self)
@@ -96,10 +96,9 @@ root = Tk()
 app = Application(root)
 root.title('Timer Application')
 # app.master.geometry('800x800+10+20')
-main_label = Label(app, text='Timer', font=('Helvetica', 30, 'bold', 'underline' ))
-main_label.grid(column=3, row=1, columnspan=7)
-root.maxsize(1000, 1000)
-root.minsize(700, 700)
+main_label = Label(app, text='Timer', font=('Helvetica', 30, 'bold', 'underline'), justify='center', fg='black', bg='white')
+# main_label.grid(column=0, row=0)
+root.geometry('500x500+10+20')
 root.after(1000, app.update_clock)
 
 
@@ -125,3 +124,7 @@ root.after(1000, app.update_clock)
 app.mainloop()
 
 
+# if __name__ == '__main__':
+#     Application()
+#     Timer()
+#     Station()
