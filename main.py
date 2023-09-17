@@ -21,6 +21,7 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.master = master
         self.label = Label(text="", fg="Black", font=("Helvetica", 20), justify='left')
+        self.label.pack(fill='none', expand=2)
         # self.label.grid(column=0, row=0)
         # self.grid()
         self.create_widgets()
@@ -30,26 +31,42 @@ class Application(Frame):
     def create_widgets(self):
         '''Creates the widgets for the application'''
 
+        # creating a Fra, e which can expand according
+        # to the size of the window
+        pane = Frame(self.master)
+        pane.pack(fill = 'none', expand = True)
+
+        # button widgets which can also expand and fill
+        # in the parent widget entirely
+
+        # Start button
+        start_button = Button(pane, text = "Start",
+                    background = "green", fg = "white", font=("Helvetica", 20) )
+        start_button.pack(side = LEFT, expand = True, fill = 'none')
+
+        # Pause/Resume button
+        pause_button = Button(pane, text = "pause/resume",
+                    background = "blue", fg = "white", font=("Helvetica", 20))
+        pause_button.pack(side = LEFT, expand = True, fill = 'none')
+
+        # Stop button
+        stop_button = Button(pane, text = "Stop",
+                    background = "red", fg = "white", font=("Helvetica", 20))
+        stop_button.pack(side = LEFT, expand = True, fill = 'none')
+
+        # Exit button
+        exit_button = Button(pane, text = "Exit",
+                    background = "black", fg = "white", font=("Helvetica", 20), command=self.exit_program)
+        exit_button.pack(side = LEFT, expand = True, fill = 'none')
+        
+
+
     def create_buttons(self):
         '''Creates the buttons for the application'''
-        # Start button
-        self.start_button = Button(self, text='Start',fg='black',        bg='green', font=("Helvetica", 20))
-        #self.start_button.grid(column=0, row=4)
-        # Pause/Resume button
-        self.pause_button = Button(self, text='Pause/Resume',fg='black', bg='blue', font=("Helvetica", 20))
-        #self.pause_button.grid(column=2, row=4)
-        # Stop button
-        self.stop_button = Button(self, text='Stop',fg='black', bg='red', font=("Helvetica", 20))
-        #self.stop_button.grid(column=3, row=4)
-        # Exit button
-        self.quit_button = Button(self, text='Quit',
-        command=self.exit_program, fg='black', bg='red', font=("Helvetica", 20))
-        #self.quit_button.grid(column=4, row=4)
-        
         # Menu bar
         menu = Menu(self)
         self.master.config(menu=menu)
-        
+
         file_menu = Menu(menu)
         file_menu.add_command(label="Item")
         file_menu.add_command(label="Exit", command=self.quit)
@@ -97,6 +114,7 @@ app = Application(root)
 root.title('Timer Application')
 # app.master.geometry('800x800+10+20')
 main_label = Label(app, text='Timer', font=('Helvetica', 30, 'bold', 'underline'), justify='center', fg='black', bg='white')
+main_label.pack(fill='none', expand=2)
 # main_label.grid(column=0, row=0)
 root.geometry('500x500+10+20')
 root.after(1000, app.update_clock)
@@ -128,3 +146,6 @@ app.mainloop()
 #     Application()
 #     Timer()
 #     Station()
+
+
+
