@@ -1,13 +1,22 @@
+"""_summary"""
 import unittest
-from main import *
+from main import Application
 class Application:
-    ''' '''
+    """_summary_
+    """
     def create_widgets(self):
+        """_summary_
+        """        
         # Implement the code to create widgets here
         pass
 
 class ApplicationTests(unittest.TestCase):
-    def test_create_widgets(self):
+    
+        """_summary_
+        """    
+        def test_create_widgets(self):
+            """_summary_
+            """            
         app = Application()
 
         # Test that create_widgets() behaves as expected
