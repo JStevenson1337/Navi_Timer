@@ -40,7 +40,7 @@ class Application(tk.Frame):
     def create_widgets(self):
         '''Creates the widgets for the application'''
 
-        # creating a Fra, e which can expand according
+        # creating a Frame which can expand according
         # to the size of the window
         pane = tk.Frame(self.master)
         pane.pack(fill = 'none', expand = 'True')
