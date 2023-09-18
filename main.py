@@ -1,6 +1,6 @@
 
 """
-    Name: main.py
+    Name: Navi_Timer
     Purpose: Main file for the application that will 
     be used to run the application and its modules in the  main loop
     Author: Jeremy Stevenson < Jeremy Stevenson at protonmail dot com>
