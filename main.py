@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
 """
     Name: main.py
     Purpose: Main file for the application that will 
