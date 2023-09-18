@@ -1,6 +1,7 @@
 import unittest
 from main import *
 class Application:
+    ''' '''
     def create_widgets(self):
         # Implement the code to create widgets here
         pass
